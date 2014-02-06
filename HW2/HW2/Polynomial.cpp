@@ -19,10 +19,9 @@ double Polynomial::Evaluate(double Value)
 void Polynomial::Read_Poly()
 {
 	int i;
-	cout << "Let's read the polynomial." << endl;
-	cout << "Enter number of terms in polynomial: ";
+	cout << "Enter number of terms in the polynomial: ";
 	cin >> Total_Terms;
-	for (i = 0; i <= Total_Terms; i++)
+	for (i = 0; i < Total_Terms; i++)
 	{
 		cout << "Enter coefficient of " << i + 1 << " term: ";
 		cin >> Poly[i].coefficient;
@@ -36,15 +35,78 @@ void Polynomial::Display_Poly()
 	int i;
 	for (i = 0; i <= Total_Terms; i++)
 	{
-		cout << Poly[i].coefficient << "x^" << Poly[i].exponent << "+";
+		if (i > 0) {
+			cout << "+";
+		}
+		cout << Poly[i].coefficient << "x^" << Poly[i].exponent;
 	}
-	cout << "\b" << endl;
+	//cout << "\b" << endl;
+}
+
+Polynomial Polynomial::Add_Poly(Polynomial B)
+{
+	int a = 0;
+	int b = 0;
+	int c = 0;
+
+	Polynomial C;
+
+	while (a < Total_Terms && b < B.Total_Terms)
+	{
+		if(Poly[a].exponent == B.Poly[b].exponent)
+		{
+			C.Poly[c].coefficient = Poly[a].coefficient + B.Poly[b].coefficient;
+			C.Poly[c].exponent = Poly[a].exponent;
+			a++;
+			b++;
+			c++;
+		}
+
+		else if(Poly[a].exponent > B.Poly[b].exponent)
+		{
+			C.Poly[c].coefficient = Poly[a].coefficient;
+			C.Poly[c].exponent = Poly[a].exponent;
+			a++;
+			c++;
+		}
+		
+		else //(A.Poly[a].exponent < B.Poly[b].exponent)
+		{
+			C.Poly[c].coefficient = B.Poly[b].coefficient;
+			C.Poly[c].exponent = B.Poly[b].exponent;
+			b++;
+			c++;
+		}
+	}
+
+	while (a < Total_Terms)
+	{
+		C.Poly[c].coefficient = Poly[a].coefficient;
+		C.Poly[c].exponent = Poly[a].exponent;
+		a++;
+		c++;
+	}
+
+	while (b < B.Total_Terms)
+	{
+		C.Poly[c].coefficient = B.Poly[b].coefficient;
+		C.Poly[c].exponent = B.Poly[b].exponent;
+		b++;
+		c++;
+	}
+	C.Total_Terms = c - 1;
+	return C;
 }
 
 void main()
 {
-	Polynomial A;
-	double answer;
+
+	Polynomial A, B, C;
+	cout << "Let's read the first polynomial." << endl;
 	A.Read_Poly();
-	answer = A.Evaluate(69.45);               //x=69.45
+	cout << endl << "Now, let's read the polynomial to be added." << endl;
+	B.Read_Poly();
+	C = A.Add_Poly(B);
+	C.Display_Poly();
+
 }
