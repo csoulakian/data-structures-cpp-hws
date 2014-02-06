@@ -1,6 +1,6 @@
 #pragma once
 
-const int MaxSize = 6;
+const int MaxSize = 100;
 typedef struct
 {
 	float coefficient;
