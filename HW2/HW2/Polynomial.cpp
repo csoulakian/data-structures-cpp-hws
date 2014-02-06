@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Polynomial.h"
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -107,6 +108,10 @@ void main()
 	cout << endl << "Now, let's read the polynomial to be added." << endl;
 	B.Read_Poly();
 	C = A.Add_Poly(B);
+	cout << endl << "The solution is ";
 	C.Display_Poly();
+	cout << endl;
 
+	system("pause"); //pauses the program to view the terminal to see the solution
+					// before completing the program which exits the terminal
 }
