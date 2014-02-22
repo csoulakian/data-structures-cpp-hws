@@ -1,2 +1,2 @@
-syntax: regex
-/debug$
+syntax: glob
+*\Debug\*
