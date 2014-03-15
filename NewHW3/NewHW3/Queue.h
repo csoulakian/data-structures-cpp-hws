@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include "LinkedList.h"
 using namespace std;
 
 class Queue
@@ -15,6 +16,12 @@ public:
         bool IsFull();
 
         void Print();
+
+		LinkedList<int> _sectors;
+		
+		//New constructors for Enqueue and Dequeue
+		//void Enqueue(int sector);
+		//int Dequeue(int diskArmLocation);
 
 private:
         int _max;

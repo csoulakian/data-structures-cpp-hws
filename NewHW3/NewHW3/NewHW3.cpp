@@ -11,6 +11,7 @@
 using namespace std;
 
 
+//Testing Queue
 int _tmain(int argc, _TCHAR* argv[])
 {
 	Queue q(4);
@@ -32,6 +33,8 @@ int _tmain(int argc, _TCHAR* argv[])
     cout << q.Dequeue() << endl << endl;
 
     q.Print();
+
+	cout << q.Dequeue() << endl << endl;
 	return 0;
 
 }
