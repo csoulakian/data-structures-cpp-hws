@@ -20,7 +20,7 @@ void Queue::Print() {
         cout << "front = " << _front << endl;
         cout << "back = " << _back << endl;
         cout << "items: ";
-        for (int i = _front; i < _back; i++) {
+        for (int i = _front; i <= _back; i++) {
                 cout << _items[i];
                 cout << " ";
         }
@@ -28,20 +28,40 @@ void Queue::Print() {
 }
 
 void Queue::Enqueue(int item) {
-        if (IsFull()) {
-                cout << "Queue is full" << endl;
+
+		if (IsFull()) {
+			cout << "Queue is full" << endl;
         } else {
-                _items[++_back] = item;
+			_items[++_back] = item;
         }
 }
 
-int Queue::Dequeue() {
-        if (IsEmpty()) {
+
+int Queue::Dequeue() { 
+	
+		if (IsEmpty()) {
                 cout << "Queue is empty" << endl;
         } else {
                 return _items[++_front];
         }
 }
+
+//New Enqueue function
+//void Queue::Enqueue(int sector) {
+//
+//		if (IsFull()) {
+//                cout << "Queue is full" << endl;
+//        } else {
+//                _sectors.AddEnd(sector);
+//        }
+//}
+
+//New Dequeue function
+//int Queue::Dequeue(int diskArmLocation) {
+//	
+//	Node<int>* nodeWithMinimum = new Node<int>;
+//
+//}
 
 bool Queue::IsEmpty() {
         return (_front == _back);
