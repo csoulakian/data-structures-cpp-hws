@@ -20,8 +20,10 @@ public:
 		LinkedList<int> _sectors;
 		
 		//New constructors for Enqueue and Dequeue
-		//void Enqueue(int sector);
-		//int Dequeue(int diskArmLocation);
+		void Enqueue(int sector);
+		int Dequeue(int diskArmLocation);
+		int Count();
+
 
 private:
         int _max;

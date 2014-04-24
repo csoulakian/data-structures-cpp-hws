@@ -56,6 +56,7 @@ public:
                 delete toDelete;
         }
 
+
 private:
 
         Node<T>* GetNodeAt(int position) {
